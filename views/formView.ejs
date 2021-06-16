@@ -1,0 +1,23 @@
+
+<%- include('bootheader') -%>
+
+<%- include('menubar') -%>
+
+    <div class="jumbotron">
+        <h1><%= fullname %>'s personal calories intake suggestion:</h1>
+        <p>--we assume you have moderate activities every day</p>
+    </div>
+
+
+<div class="col">
+        Hello <%= fullname %>:
+        By your information, we know that <br><br>
+        you are <%= age %> years old;<br><br>
+        you are <%= height %> cm;<br><br>
+        you weight <%= weight %> kg;<br><br>
+        your recommended calories intake per day is <%= calories %>; <br><br>
+ </div>
+    <hr>
+
+
+<%- include('bootfooter') -%>

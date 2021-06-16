@@ -1,56 +1,44 @@
 <%- include('bootheader') -%>
 <%- include('menubar') -%>
     <h1>
-      Form demo
+      Lets see what is your goal and your current dietary habit...
     </h1>
-
-<form method="post" action="/showformdata" class="bg-info">
+<div class="col">
+  <div class="row">
+<form method="post" action="/showformdata">
   Enter your name:
-  <input type="text" 
-         name="fullname" 
+  <input type="text"
+         name="fullname"
          placeholder="your full name"><br>
-  When were you born? 
-  <input type="date" 
-         name="birthday"><br>
-  What is your favorite color? 
-  <input type="color" 
-         name="favoriteColor"> <br>
-  
-  What grade are you going into next year?
-  <select name="grade1">
-    <option>9th</option>
-    <option>10th</option>
-    <option>11th</option>
-    <option>12th</option>
-  </select>
-  
-  <select name="grade2">
-    <option value="9">freshman</option>
-    <option value="10">sophomore</option>
-    <option value="11">junior</option>
-    <option value="12">senior</option>
-  </select>
-  <br>
-  Tell us about yourself:
-  <textarea name="bio" rows="10" cols="40"></textarea>
-  <br>
-  Are you over 18?<br>
-  yes <input type="radio" name="over18" value="yes"><br>
-  no  <input type="radio" name="over18" value="no"><br>
-  don't want to say
-      <input type="radio" name="over18" value="maybe"><br>
-  
- What are your interests:<br>
-  reading <input type="checkbox" name="interest" value="reading"><br>
-  coding  <input type="checkbox" name="interest" value="code"><br>
-  singing <input type="checkbox" name="interest" value="voice"><br>
-  video games 
-          <input type="checkbox" name="interest" value="games"><br>
-  meditation 
-          <input type="checkbox" name="interest" value="zen"><br>
-  <hr>
-  
-  <input type="submit" value="Register now">
+  What is your age?
+  <input type="text"
+         name="age"
+         placeholder="your age"><br>
+  What is your height?
+  <input type="text"
+         name="weight"
+         placeholder="weight in kilograms(kg)"><br>
+  What is your weight?
+<input type="text"
+        name="height"
+        placeholder="height in centimeters(cm)"><br>
+        <hr>
+  <img src="https://www.endocrinologyadvisor.com/wp-content/uploads/
+        sites/9/2020/04/diet-plan_G_1176304726.jpg" width="300" height="200">
+
+<br><br>
+  What is your biological gender<br>
+    female <input type="radio" name="gender" value="female"><br>
+    male <input type="radio" name="gender" value="male"><br>
+            <hr>
+
+  Are you looking for a diet to lose weight?<br>
+    yes <input type="radio" name="loseWeight" value="yes"><br>
+    no  <input type="radio" name="loseWeight" value="no"><br>
+      <hr>
+  <input type="submit" value="Done">
+    </div>
+  </div>
 </form>
 
 <hr>

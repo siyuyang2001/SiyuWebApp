@@ -52,7 +52,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/demo", 
+app.get("/demo",
         function (req, res){res.render("demo");});
 
 app.get("/about", (request, response) => {
@@ -63,10 +63,82 @@ app.get("/form", (request,response) => {
   response.render("form")
 })
 
-app.post("/showformdata", (request,response) => {
-  response.json(request.body)
+
+app.get("/form", (request,response) => {
+  response.render("form")
 })
 
+app.post('/showformdata', (req,res) => {
+  const fullname=req.body.fullname
+  const age=parseInt(req.body.age)
+  const weight = parseInt(req.body.weight)
+  const height=parseInt(req.body.height)
+  const loseWeight=req.body.loseWeight
+  const gender=req.body.gender
+
+  res.locals.fullname=fullname
+  res.locals.age = age
+  res.locals.weight =weight
+  res.locals.height= height
+  res.locals.gender=gender
+  res.locals.loseWeight= loseWeight
+  res.locals.calories=calories(age,gender,loseWeight)
+  res.render('formView')
+})
+function calories(age,gender,loseWeight){
+  if(loseWeight=="no"){
+  if(age>1&&age<4)
+  return "1000";
+  if(age>3&&age<9)
+  return "1400-1600";
+  if(age<14 &&age>8 && gender=="female")
+  return "1600-2000";
+  if(age<14 &&age>8 && gender=="male")
+  return "1800-2200";
+  if(age<19 &&age>13 && gender=="female")
+  return "2000";
+  if(age<19 &&age>13 && gender=="male")
+  return "2400--2800";
+  if(age<31 &&age>18 &&gender=="female")
+  return "2000--2200";
+  if(age<31 &&age>18 &&gender=="male")
+  return "2600--2800";
+  if(age<51 &&age>30 && gender=="female")
+  return "2000";
+  if(age<51 &&age>30 &&gender=="male")
+  return "2400-2600";
+  if(age>50)
+  return "around 2000";
+}
+if(loseWeight=="yes"){
+if(age>1&&age<4)
+return "1000";
+if(age>3&&age<9)
+return "1200";
+if(age<14 &&age>8 && gender=="female")
+return "1600";
+if(age<14 &&age>8 && gender=="male")
+return "1800";
+if(age<19 &&age>13 && gender=="female")
+return "1800";
+if(age<19 &&age>13 && gender=="male")
+return "2000";
+if(age<31 &&age>18 &&gender=="female")
+return "2000";
+if(age<31 &&age>18 &&gender=="male")
+return "2400";
+if(age<51 &&age>30 && gender=="female")
+return "1800";
+if(age<51 &&age>30 &&gender=="male")
+return "2200";
+if(age>50)
+return "around 2000";
+}
+
+
+
+
+}
 // Here is where we will explore using forms!
 
 
@@ -75,7 +147,7 @@ app.post("/showformdata", (request,response) => {
 // and send it back to the browser in raw JSON form, see
 // https://covidtracking.com/data/api
 // for all of the kinds of data you can get
-app.get("/c19", 
+app.get("/c19",
   async (req,res,next) => {
     try {
       const url = "https://covidtracking.com/api/v1/us/current.json"
@@ -116,6 +188,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
 
 //Here we set the port to use
 const port = "5000";
