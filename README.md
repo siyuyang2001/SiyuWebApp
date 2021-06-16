@@ -1,3 +1,2 @@
-# App Design Demo
-This is a simple demo which shows how to create an app using HTML and Bootstrap for styling and 
-NodeJS/Express for the server infrastructure with EJS as the template engine.
+# Siyu Yang's final web app
+This is an diet-calories tracking app. It will give suggestions to a person accommendating to his/her biological gender, and calculate the amount of calories the person intaked.
