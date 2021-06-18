@@ -5,17 +5,20 @@
 
     <div class="jumbotron">
         <h1><%= fullname %>'s personal calories intake suggestion:</h1>
-        <p>--we assume you have moderate activities every day</p>
+        <h3>If you have moderate activities every day...</h3>
     </div>
 
 
 <div class="col">
-        Hello <%= fullname %>:
-        By your information, we know that <br><br>
-        you are <%= age %> years old;<br><br>
-        you are <%= height %> cm;<br><br>
-        you weight <%= weight %> kg;<br><br>
-        your recommended calories intake per day is <%= calories %>; <br><br>
+  <ul>
+
+  According to your information, we know that... <br><br>
+       <li>  you are <%= age %> years old;</li><br><br>
+       <li>  you are <%= height %> cm;</li><br><br>
+       <li>  you weight <%= weight %> kg;</li><br><br>
+    <li>   <p style="background-color:tomato;">your recommended calories intake per day is <%= calories %>; <br><br></p></li>
+
+  </ul>
  </div>
     <hr>
 
