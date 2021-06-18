@@ -133,44 +133,34 @@ if(age<51 &&age>30 &&gender=="male")
 return "2200";
 if(age>50)
 return "around 2000";
-}
+}}
 
 
+app.get('/food', (req,res) => {
+  res.render('food')
+})
 
-
-}
-// Here is where we will explore using forms!
-
-
-
-// this example shows how to get the current US covid data
-// and send it back to the browser in raw JSON form, see
-// https://covidtracking.com/data/api
-// for all of the kinds of data you can get
-app.get("/c19",
+app.post("/getFoodData",
   async (req,res,next) => {
     try {
-      const url = "https://covidtracking.com/api/v1/us/current.json"
+      const food = req.body.food
+      const url = "https://api.nal.usda.gov/fdc/v1/foods/search?query="+food+
+      "&pageSize=2&api_key=XnldbUVobwtWVk7okOaqtHPgMbOSrwLWYj2mdWGz"
       const result = await axios.get(url)
-      res.json(result.data)
+      console.dir(result.data)
+      console.log('results')
+      console.dir(result.data.results)
+      res.locals.results = result.data
+      res.locals.food = food
+      res.locals.result = result
+      // res.json(result.data)
+
+      res.render('viewFood')
     } catch(error){
       next(error)
     }
 })
 
-// this shows how to use an API to get recipes
-// http://www.recipepuppy.com/about/api/
-// the example here finds omelet recipes with onions and garlic
-app.get("/omelet",
-  async (req,res,next) => {
-    try {
-      const url = "http://www.recipepuppy.com/api/?i=onions,garlic&q=omelet&p=3"
-      const result = await axios.get(url)
-      res.json(result.data)
-    } catch(error){
-      next(error)
-    }
-})
 
 // Don't change anything below here ...
 
