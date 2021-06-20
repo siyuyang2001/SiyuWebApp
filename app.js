@@ -135,11 +135,12 @@ if(age>50)
 return "around 2000";
 }}
 
-
 app.get('/food', (req,res) => {
   res.render('food')
 })
-
+function l(data){
+  return data.length
+}
 app.post("/getFoodData",
   async (req,res,next) => {
     try {
@@ -147,15 +148,22 @@ app.post("/getFoodData",
       const url = "https://api.nal.usda.gov/fdc/v1/foods/search?query="+food+
       "&pageSize=2&api_key=XnldbUVobwtWVk7okOaqtHPgMbOSrwLWYj2mdWGz"
       const result = await axios.get(url)
+      const data = result.data.foods
+
       console.dir(result.data)
       console.log('results')
       console.dir(result.data.results)
       res.locals.results = result.data
       res.locals.food = food
       res.locals.result = result
+      const length = l(data)
       // res.json(result.data)
-
-      res.render('viewFood')
+      if(length>0){
+      res.render('viewFood')}
+      else{
+        res.locals.food = food
+        res.render('Nofood')
+      }
     } catch(error){
       next(error)
     }
